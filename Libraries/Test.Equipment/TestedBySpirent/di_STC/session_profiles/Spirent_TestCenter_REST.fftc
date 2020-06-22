@@ -1,0 +1,1913 @@
+<?xml version="1.0"?>
+<testCase version="8.2.1.0">
+    <general>
+        <sessionClass includeTestCase="true" sessionType="project://di_STC/session_profiles/Spirent_TestCenter_REST.ffsp"/>
+    </general>
+    <procedures>
+        <item name="main">
+            <steps>
+                <item guid="f5cfb0c5-9f96-44d8-bada-e859a3011b95" action="open" session="stc" useFieldsInCommand="false">
+                    <command>
+                        <body>project://di_STC/session_profiles/Spirent_TestCenter_REST.ffsp</body>
+                    </command>
+                    <postProcessing>
+                        <analysisRules>
+                            <item>
+                                <extractorInfo extractorType="contains">
+                                    <extractorProperties type="com.fnfr.svt.mapping.execution.extractors.ExtractorContainsPropertyGroup">
+                                        <searchString>Error</searchString>
+                                    </extractorProperties>
+                                </extractorInfo>
+                                <processorInfo ruleType="assert">
+                                    <ruleProperties type="com.fnfr.svt.execution.builtin.processors.AssertionPropertyGroup">
+                                        <expression>$value == 1</expression>
+                                        <actionsWhenTrue>
+                                            <item actionId="FailTest">
+                                                <actionProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                            </item>
+                                            <item actionId="ExitExecution">
+                                                <actionProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                            </item>
+                                        </actionsWhenTrue>
+                                    </ruleProperties>
+                                </processorInfo>
+                            </item>
+                        </analysisRules>
+                    </postProcessing>
+                    <applicationProperties type="com.fnfr.svt.documents.OpenStepPropertyGroup">
+                        <stepProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                        <sessionProperties type="com.fnfr.svt.adapter.automation.tools.common.documents.TransferableDocumentObject" transferableToolId="com.spirent.itest.applications.stcrest" transferableType="com.spirent.itest.applications.stcrest.properties.TestCenterRestSessionProperties" RestbaseUrl="http://labserver-1/stcapi" RestbaseUrl.inherit="false" sessionName="rfc2544" sessionName.inherit="false" ownerId="[info user user1]" ownerId.inherit="false" ipAddress="stc-1" ipAddress.inherit="false">
+                            <configureCustom16bitFilter transferableToolId="com.spirent.itest.applications.stcrest" transferableType="com.spirent.itest.applications.stcrest.properties.Analyzer16BitFilterProperties" mask="ffff" mask.inherit="false" endOfRange="ffff" endOfRange.inherit="false"/>
+                        </sessionProperties>
+                        <sessionClass type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                        <sessionVersion type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                    </applicationProperties>
+                </item>
+                <item guid="60bad956-278c-48c0-894d-34f18b1663b9" action="open" session="rest" skip="true">
+                    <command>
+                        <body>application:com.fnfr.itest.applications.webservices.restful</body>
+                    </command>
+                    <applicationProperties type="com.fnfr.svt.documents.OpenStepPropertyGroup">
+                        <stepProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                        <sessionProperties type="com.fnfr.svt.adapter.automation.tools.common.documents.TransferableDocumentObject" transferableToolId="com.fnfr.itest.applications.webservices.restful" transferableType="com.fnfr.itest.applications.webservices.properties.restful.RESTfulSessionProperties" url="http://ps-shared-stc-labserver-1.spirenteng.com/stcapi/" url.inherit="false"/>
+                        <sessionClass type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                        <sessionVersion type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                    </applicationProperties>
+                </item>
+                <item guid="dc45fc6e-e2e2-4c08-b58f-824426c56820" action="comment" skip="true" useFieldsInCommand="false">
+                    <command>
+                        <body>open Docker VM lab server on local network</body>
+                    </command>
+                    <nestedSteps>
+                        <item guid="4bb34056-947a-4bea-a971-9d8a1e32c779" action="open" session="stc" useFieldsInCommand="false">
+                            <command>
+                                <body>project://di_STC/session_profiles/Spirent_TestCenter_REST.ffsp</body>
+                            </command>
+                            <postProcessing>
+                                <analysisRules>
+                                    <item>
+                                        <extractorInfo extractorType="contains">
+                                            <extractorProperties type="com.fnfr.svt.mapping.execution.extractors.ExtractorContainsPropertyGroup">
+                                                <searchString>Error</searchString>
+                                            </extractorProperties>
+                                        </extractorInfo>
+                                        <processorInfo ruleType="assert">
+                                            <ruleProperties type="com.fnfr.svt.execution.builtin.processors.AssertionPropertyGroup">
+                                                <expression>$value == 1</expression>
+                                                <actionsWhenTrue>
+                                                    <item actionId="FailTest">
+                                                        <actionProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                                    </item>
+                                                    <item actionId="ExitExecution">
+                                                        <actionProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                                    </item>
+                                                </actionsWhenTrue>
+                                            </ruleProperties>
+                                        </processorInfo>
+                                    </item>
+                                </analysisRules>
+                            </postProcessing>
+                            <applicationProperties type="com.fnfr.svt.documents.OpenStepPropertyGroup">
+                                <stepProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                <sessionProperties type="com.fnfr.svt.adapter.automation.tools.common.documents.TransferableDocumentObject" transferableToolId="com.spirent.itest.applications.stcrest" transferableType="com.spirent.itest.applications.stcrest.properties.TestCenterRestSessionProperties" RestbaseUrl="http://192.168.245.131/stcapi" RestbaseUrl.inherit="false" ports="2/10 2/12" ports.inherit="false" config="project://di_STC/configs/RFC2544_Throughput_no_DHCP.xml" config.inherit="false">
+                                    <configureCustom16bitFilter transferableToolId="com.spirent.itest.applications.stcrest" transferableType="com.spirent.itest.applications.stcrest.properties.Analyzer16BitFilterProperties" mask="ffff" mask.inherit="false" endOfRange="ffff" endOfRange.inherit="false"/>
+                                </sessionProperties>
+                                <sessionClass type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                <sessionVersion type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                            </applicationProperties>
+                        </item>
+                        <item guid="d9628e99-4229-4863-9ddf-6b0f1ca7290f" action="close" session="stc">
+                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                        </item>
+                    </nestedSteps>
+                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                </item>
+                <item guid="4b770106-2140-4058-9176-c1e7ec33969f" action="comment" skip="true" useFieldsInCommand="false">
+                    <command>
+                        <body>open APT lab server Spirent network</body>
+                    </command>
+                    <nestedSteps>
+                        <item guid="732e050a-ac70-423a-adc1-c9664ab54fae" action="open" session="stc">
+                            <command>
+                                <body>project://di_STC/session_profiles/Spirent_TestCenter_REST.ffsp</body>
+                            </command>
+                            <postProcessing>
+                                <analysisRules>
+                                    <item>
+                                        <extractorInfo extractorType="contains">
+                                            <extractorProperties type="com.fnfr.svt.mapping.execution.extractors.ExtractorContainsPropertyGroup">
+                                                <searchString>Error</searchString>
+                                            </extractorProperties>
+                                        </extractorInfo>
+                                        <processorInfo ruleType="assert">
+                                            <ruleProperties type="com.fnfr.svt.execution.builtin.processors.AssertionPropertyGroup">
+                                                <expression>$value == 1</expression>
+                                                <actionsWhenTrue>
+                                                    <item actionId="FailTest">
+                                                        <actionProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                                    </item>
+                                                    <item actionId="ExitExecution">
+                                                        <actionProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                                    </item>
+                                                </actionsWhenTrue>
+                                            </ruleProperties>
+                                        </processorInfo>
+                                    </item>
+                                </analysisRules>
+                            </postProcessing>
+                            <applicationProperties type="com.fnfr.svt.documents.OpenStepPropertyGroup">
+                                <stepProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                <sessionProperties type="com.fnfr.svt.adapter.automation.tools.common.documents.TransferableDocumentObject" transferableToolId="com.spirent.itest.applications.stcrest" transferableType="com.spirent.itest.applications.stcrest.properties.TestCenterRestSessionProperties" RestbaseUrl="http://ps-shared-stc-labserver-1.spirenteng.com/stcapi" RestbaseUrl.inherit="false" ipAddress="10.140.68.16" ipAddress.inherit="false" ports="2/10 2/12" ports.inherit="false" config="project://di_STC/configs/RFC2544_Throughput_no_DHCP.xml" config.inherit="false">
+                                    <configureCustom16bitFilter transferableToolId="com.spirent.itest.applications.stcrest" transferableType="com.spirent.itest.applications.stcrest.properties.Analyzer16BitFilterProperties" mask="ffff" mask.inherit="false" endOfRange="ffff" endOfRange.inherit="false"/>
+                                </sessionProperties>
+                                <sessionClass type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                <sessionVersion type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                            </applicationProperties>
+                        </item>
+                    </nestedSteps>
+                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                </item>
+                <item guid="b4b99e86-2e4c-4965-afbf-ce53dc0ccb90" action="DeleteResultsDb" session="stc" skip="true" useFieldsInCommand="false">
+                    <command>
+                        <body>-results_path /tmp/SAL_ID-0000000000-RFC2544_Throughput_no_DHCP</body>
+                    </command>
+                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                </item>
+                <item guid="4ee0dcf8-41d0-4a64-bb32-0824293c2de7" action="SetResultsDirectory" session="stc" skip="true" useFieldsInCommand="false">
+                    <command>
+                        <body>-LabServer 1</body>
+                    </command>
+                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                </item>
+                <item guid="952cea08-5844-4b3a-826f-6cde0fdf8dff" action="SetResultsDirectory" session="stc" skip="true" useFieldsInCommand="false">
+                    <command>
+                        <body>-LabServer true -SaveOutputFilesInCwd true</body>
+                    </command>
+                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                </item>
+                <item guid="bc061c96-1d4a-42d0-9095-91dc9ceec5c6" action="performConfig" session="stc" normalOffset="38.989" estimatedStepExecutionTime="0.005">
+                    <command>
+                        <body>-handle project1.TestResultSetting</body>
+                    </command>
+                    <applicationProperties type="com.fnfr.itest.platform2.shared.documents.ntaf.NtafTransferableDocumentObject" action="performConfig" subharness="http://spirent.com/NTAF/harness/iTest/BaseCommands/Main" harness="http://spirent.com/NTAF/harness/iTest/BaseCommands/Main" harnessName="http://spirent.com/NTAF/harness/STC/commands/NonSequencer/Main" handle="project1.TestResultSetting" handle.inherit="false">
+                        <attributes inherit="false">
+                            <item name="SaveOutputFilesInCwd" name.inherit="false" value="TRUE" value.inherit="false"/>
+                        </attributes>
+                    </applicationProperties>
+                </item>
+                <item guid="b82728d8-af42-4bac-8d10-a93a3977ad3f" action="RunSequencer" session="stc" useFieldsInCommand="false">
+                    <command>
+                        <body> -debug 0</body>
+                    </command>
+                    <postProcessing>
+                        <analysisRules>
+                            <item>
+                                <extractorInfo extractorType="query">
+                                    <extractorProperties type="com.fnfr.svt.mapping.execution.extractors.QueryDataExtractorPropertyGroup">
+                                        <query>TestState()</query>
+                                    </extractorProperties>
+                                </extractorInfo>
+                                <processorInfo ruleType="assert">
+                                    <ruleProperties type="com.fnfr.svt.execution.builtin.processors.AssertionPropertyGroup">
+                                        <expression>$value eq &quot;FAILED&quot;</expression>
+                                        <actionsWhenTrue>
+                                            <item actionId="FailTest">
+                                                <actionProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                            </item>
+                                            <item actionId="DeclareExecutionIssue">
+                                                <actionProperties type="com.fnfr.svt.execution.builtin.actions.ExecutionIssuePropertyGroup">
+                                                    <message>TestCenter sequencer failed</message>
+                                                </actionProperties>
+                                            </item>
+                                            <item actionId="ExitProcedure">
+                                                <actionProperties type="com.fnfr.svt.execution.builtin.actions.ExitProcedurePropertyGroup"/>
+                                            </item>
+                                        </actionsWhenTrue>
+                                        <actionsWhenFalse>
+                                            <item actionId="PassTestIfNotAlreadyFailed">
+                                                <actionProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                            </item>
+                                            <item actionId="DeclareExecutionIssue">
+                                                <actionProperties type="com.fnfr.svt.execution.builtin.actions.ExecutionIssuePropertyGroup" severity="OK">
+                                                    <message>TestCenter sequencer passed</message>
+                                                </actionProperties>
+                                            </item>
+                                        </actionsWhenFalse>
+                                    </ruleProperties>
+                                </processorInfo>
+                            </item>
+                        </analysisRules>
+                    </postProcessing>
+                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                </item>
+                <item guid="dcbcca26-48c9-4edf-a2ad-bb18b663c5c9" action="GetResultsDirectory" session="stc" skip="true" useFieldsInCommand="false">
+                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                </item>
+                <item guid="4d53325a-05ff-44cd-b458-40238fbbda43" action="GetTestResultSettingPaths" session="stc">
+                    <applicationProperties type="com.fnfr.itest.platform2.shared.documents.ntaf.NtafTransferableDocumentObject" action="GetTestResultSettingPaths" subharness="http://spirent.com/NTAF/harness/STC/commands/NonSequencer/Other/Other" harness="http://spirent.com/NTAF/harness/STC/commands/NonSequencer/Main" harnessName="http://spirent.com/NTAF/harness/STC/commands/NonSequencer/Main"/>
+                </item>
+            </steps>
+            <response>{}</response>
+        </item>
+        <item name="SetResultsDirectory" isPublic="true" isVBlock="true">
+            <description>Set the directory to which the TestCenter test result will be saved</description>
+            <steps>
+                <item guid="02d3c8df-d479-4a77-b79c-e11e2d54bbed" action="eval" useFieldsInCommand="false">
+                    <command>
+                        <body>set ResultsDirectory [string map {\\\\ /} $ResultsDirectory]</body>
+                    </command>
+                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                </item>
+                <item guid="dc65f368-9144-46f5-afc4-961c1c457b47" action="eval" useFieldsInCommand="false">
+                    <command>
+                        <body>set SaveOutputFilesInCwd [string toupper $SaveOutputFilesInCwd]</body>
+                    </command>
+                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                </item>
+                <item guid="5cea1aa5-987c-4f49-988f-388ba3be66db" action="eval" skip="true" useFieldsInCommand="false">
+                    <command>
+                        <body>set LabServer [string toupper $LabServer]</body>
+                    </command>
+                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                </item>
+                <item guid="959a9987-95f7-4834-9f13-67989c724d15" action="if" useFieldsInCommand="false">
+                    <command>
+                        <body>$LabServer == &quot;true&quot;</body>
+                    </command>
+                    <nestedSteps>
+                        <item guid="3de1e896-8e85-4b28-a495-589af1f6e93d" action="then" useFieldsInCommand="false">
+                            <nestedSteps>
+                                <item guid="4154297c-194d-4a2e-82b7-62fb53bfa55f" action="eval" useFieldsInCommand="false">
+                                    <command>
+                                        <body>set ResultsDirectory &quot;/tmp&quot;</body>
+                                    </command>
+                                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                </item>
+                            </nestedSteps>
+                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                        </item>
+                        <item guid="bcf91a5d-3e11-47e8-b240-86feb6e76500" action="else" useFieldsInCommand="false">
+                            <nestedSteps>
+                                <item guid="f9daf817-8b39-47f5-a6eb-6e7dddce4f92" action="if" useFieldsInCommand="false">
+                                    <command>
+                                        <body>$ResultsDirectory == &quot;&quot;</body>
+                                    </command>
+                                    <nestedSteps>
+                                        <item guid="6b554f82-30e2-4c57-a2ed-2c3a99745b28" action="then" useFieldsInCommand="false">
+                                            <nestedSteps>
+                                                <item guid="657c2c93-66c8-499e-bddc-bf61c593cb6b" action="if" useFieldsInCommand="false">
+                                                    <command>
+                                                        <body>[info platform] == &quot;windows&quot;</body>
+                                                    </command>
+                                                    <nestedSteps>
+                                                        <item guid="c5486582-9fb1-4088-b007-a7b863351a41" action="then" useFieldsInCommand="false">
+                                                            <nestedSteps>
+                                                                <item guid="eebbf332-c559-4291-bd04-d4c0e4911138" action="eval" useFieldsInCommand="false">
+                                                                    <command>
+                                                                        <body>set ResultsDirectory &quot;C:/tmp&quot;</body>
+                                                                    </command>
+                                                                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                                                </item>
+                                                            </nestedSteps>
+                                                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                                        </item>
+                                                        <item guid="959a1d6e-31f1-4e84-956f-fa2985b00a1f" action="else" useFieldsInCommand="false">
+                                                            <nestedSteps>
+                                                                <item guid="a80b8cc9-f048-4fee-a741-7d0caac1631b" action="eval" useFieldsInCommand="false">
+                                                                    <command>
+                                                                        <body>set ResultsDirectory &quot;/tmp&quot;</body>
+                                                                    </command>
+                                                                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                                                </item>
+                                                            </nestedSteps>
+                                                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                                        </item>
+                                                    </nestedSteps>
+                                                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                                </item>
+                                            </nestedSteps>
+                                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                        </item>
+                                    </nestedSteps>
+                                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                </item>
+                                <item guid="4362ca05-f6bd-49ab-baa6-5102d950c0b3" action="comment" useFieldsInCommand="false">
+                                    <command>
+                                        <body>Make sure directory exists locally</body>
+                                    </command>
+                                    <nestedSteps>
+                                        <item guid="6ad0d5dd-20a6-4b1c-be0a-e1fa7db7fc90" action="eval" useFieldsInCommand="false">
+                                            <command>
+                                                <body>set uri [file pathToUri $ResultsDirectory]</body>
+                                            </command>
+                                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                        </item>
+                                        <item guid="e176d92f-6443-4833-8f36-760860c9d018" action="eval" useFieldsInCommand="false">
+                                            <command>
+                                                <body>file mkdir $uri</body>
+                                            </command>
+                                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                        </item>
+                                    </nestedSteps>
+                                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                </item>
+                            </nestedSteps>
+                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                        </item>
+                    </nestedSteps>
+                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                </item>
+                <item guid="13f39203-4d38-4737-ae41-c7805165d677" action="comment" useFieldsInCommand="false">
+                    <command>
+                        <body>Configure the TestResultSetting. See document &quot;Spirent TestCenter Automation Obj Ref&quot;</body>
+                    </command>
+                    <nestedSteps>
+                        <item guid="12e6092b-dd6e-4cc9-8b20-dd37dd0b9585" action="performConfig" session="$session" normalOffset="38.989" estimatedStepExecutionTime="0.005">
+                            <command>
+                                <body>-handle project1.TestResultSetting</body>
+                            </command>
+                            <postProcessing>
+                                <analysisRules>
+                                    <item>
+                                        <extractorInfo extractorType="query">
+                                            <extractorProperties type="com.fnfr.svt.mapping.execution.extractors.QueryDataExtractorPropertyGroup">
+                                                <query>ResultsDirectory()</query>
+                                            </extractorProperties>
+                                        </extractorInfo>
+                                        <processorInfo ruleType="store">
+                                            <ruleProperties type="com.fnfr.svt.execution.builtin.processors.StoreProcessorPropertyGroup">
+                                                <query>ResultsDirectory</query>
+                                                <responseValue type="com.fnfr.documents.PropertyBoolean">true</responseValue>
+                                                <variable type="com.fnfr.documents.PropertyBoolean">false</variable>
+                                                <secret type="com.fnfr.documents.PropertyBoolean">false</secret>
+                                            </ruleProperties>
+                                        </processorInfo>
+                                    </item>
+                                    <item>
+                                        <extractorInfo extractorType="query">
+                                            <extractorProperties type="com.fnfr.svt.mapping.execution.extractors.QueryDataExtractorPropertyGroup">
+                                                <query>SaveResultsRelativeTo()</query>
+                                            </extractorProperties>
+                                        </extractorInfo>
+                                        <processorInfo ruleType="store">
+                                            <ruleProperties type="com.fnfr.svt.execution.builtin.processors.StoreProcessorPropertyGroup">
+                                                <query>SaveResultsRelativeTo</query>
+                                                <responseValue type="com.fnfr.documents.PropertyBoolean">true</responseValue>
+                                                <variable type="com.fnfr.documents.PropertyBoolean">false</variable>
+                                                <secret type="com.fnfr.documents.PropertyBoolean">false</secret>
+                                            </ruleProperties>
+                                        </processorInfo>
+                                    </item>
+                                    <item>
+                                        <extractorInfo extractorType="query">
+                                            <extractorProperties type="com.fnfr.svt.mapping.execution.extractors.QueryDataExtractorPropertyGroup">
+                                                <query>SaveOutputFilesInCwd()</query>
+                                            </extractorProperties>
+                                        </extractorInfo>
+                                        <processorInfo ruleType="store">
+                                            <ruleProperties type="com.fnfr.svt.execution.builtin.processors.StoreProcessorPropertyGroup">
+                                                <storageLocation>var1</storageLocation>
+                                                <query>SaveOutputFilesInCwd</query>
+                                                <responseValue type="com.fnfr.documents.PropertyBoolean">true</responseValue>
+                                                <variable type="com.fnfr.documents.PropertyBoolean">false</variable>
+                                                <secret type="com.fnfr.documents.PropertyBoolean">false</secret>
+                                            </ruleProperties>
+                                        </processorInfo>
+                                    </item>
+                                </analysisRules>
+                            </postProcessing>
+                            <applicationProperties type="com.fnfr.itest.platform2.shared.documents.ntaf.NtafTransferableDocumentObject" action="performConfig" subharness="http://spirent.com/NTAF/harness/iTest/BaseCommands/Main" harness="http://spirent.com/NTAF/harness/iTest/BaseCommands/Main" harnessName="http://spirent.com/NTAF/harness/STC/commands/NonSequencer/Main" handle="project1.TestResultSetting" handle.inherit="false">
+                                <attributes inherit="false">
+                                    <item name="SaveResultsRelativeTo" name.inherit="false" value="$SaveResultsRelativeTo" value.inherit="false"/>
+                                    <item name="ResultsDirectory" name.inherit="false" value="$ResultsDirectory" value.inherit="false"/>
+                                    <item name="SaveOutputFilesInCwd" name.inherit="false" value="$SaveOutputFilesInCwd" value.inherit="false"/>
+                                </attributes>
+                            </applicationProperties>
+                        </item>
+                    </nestedSteps>
+                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                </item>
+                <item guid="fde6b667-e0ea-4287-b06b-f36892d559b5" action="json" skip="true" useFieldsInCommand="false">
+                    <command>
+                        <body>-action setJsonValue -editResponseStructure true -pathValue {&quot;ResultsDirectory&quot;:&quot;$dir&quot;,&quot;SaveResultsRelativeTo&quot;:&quot;$relative_to&quot;,&quot;SaveOutputFilesInCwd&quot;:&quot;$SaveOutputFilesInCwd&quot;}</body>
+                    </command>
+                    <applicationProperties type="com.fnfr.svt.execution.builtin.json.JsonPropertiesGroup">
+                        <action inherit="false">setJsonValue</action>
+                        <pathValue inherit="false" sub="true">{&quot;ResultsDirectory&quot;:&quot;$dir&quot;,&quot;SaveResultsRelativeTo&quot;:&quot;$relative_to&quot;,&quot;SaveOutputFilesInCwd&quot;:&quot;$SaveOutputFilesInCwd&quot;}</pathValue>
+                        <editResponseStructure inherit="false">true</editResponseStructure>
+                    </applicationProperties>
+                </item>
+            </steps>
+            <multilineDescription>Specify the directory to save the test results. The entire path is created, if not already present.
+Do not use a URI for the -ResultsDirectory. It must be a native file path. Otherwise, the sequencer will get stuck in a PAUSE state.</multilineDescription>
+            <arguments>
+                <item name="ResultsDirectory"/>
+                <item name="SaveResultsRelativeTo">
+                    <description>See Spirent TestCenter Automation Object Reference for other possible values.</description>
+                    <defaultValue>NONE</defaultValue>
+                    <isMandatory>true</isMandatory>
+                </item>
+                <item name="LabServer">
+                    <description>true=LabServer is being used</description>
+                    <defaultValue>false</defaultValue>
+                    <isMandatory>true</isMandatory>
+                </item>
+                <item name="SaveOutputFilesInCwd">
+                    <description>true: Files that use relative paths will be saved in the current working directory (legacy behavior). The ResultsDirectory and SaveResultsRelativeTo attributes will have no effect.
+false: Files that use relative paths will be saved according to the settings of the ResultsDirectory and SaveResultsRelativeTo attributes of this object.</description>
+                    <defaultValue>false</defaultValue>
+                </item>
+            </arguments>
+            <response>{&quot;SaveResultsRelativeTo&quot;:&quot;value&quot;,&quot;ResultsDirectory&quot;:&quot;value&quot;,&quot;SaveOutputFilesInCwd&quot;:&quot;value&quot;}</response>
+        </item>
+        <item name="GetResultsDirectory" isPublic="true" isVBlock="true">
+            <description>Get results directory</description>
+            <steps>
+                <item guid="f47b3acc-a1d8-4165-b213-5fe3be0faba6" action="performGet" session="$session" skip="true">
+                    <command>
+                        <body>-handle project1.TestResultSetting</body>
+                    </command>
+                    <postProcessing>
+                        <analysisRules>
+                            <item>
+                                <extractorInfo extractorType="query">
+                                    <extractorProperties type="com.fnfr.svt.mapping.execution.extractors.QueryDataExtractorPropertyGroup">
+                                        <query>ResultsDirectory()</query>
+                                    </extractorProperties>
+                                </extractorInfo>
+                                <processorInfo ruleType="store">
+                                    <ruleProperties type="com.fnfr.svt.execution.builtin.processors.StoreProcessorPropertyGroup">
+                                        <storageLocation>dir</storageLocation>
+                                        <responseValue type="com.fnfr.documents.PropertyBoolean">false</responseValue>
+                                        <variable type="com.fnfr.documents.PropertyBoolean">true</variable>
+                                        <secret type="com.fnfr.documents.PropertyBoolean">false</secret>
+                                    </ruleProperties>
+                                </processorInfo>
+                            </item>
+                            <item>
+                                <extractorInfo extractorType="query">
+                                    <extractorProperties type="com.fnfr.svt.mapping.execution.extractors.QueryDataExtractorPropertyGroup">
+                                        <query>SaveResultsRelativeTo()</query>
+                                    </extractorProperties>
+                                </extractorInfo>
+                                <processorInfo ruleType="store">
+                                    <ruleProperties type="com.fnfr.svt.execution.builtin.processors.StoreProcessorPropertyGroup">
+                                        <storageLocation>relative_to</storageLocation>
+                                        <responseValue type="com.fnfr.documents.PropertyBoolean">false</responseValue>
+                                        <variable type="com.fnfr.documents.PropertyBoolean">true</variable>
+                                        <secret type="com.fnfr.documents.PropertyBoolean">false</secret>
+                                    </ruleProperties>
+                                </processorInfo>
+                            </item>
+                        </analysisRules>
+                    </postProcessing>
+                    <applicationProperties type="com.fnfr.itest.platform2.shared.documents.ntaf.NtafTransferableDocumentObject" action="performGet" subharness="http://spirent.com/NTAF/harness/iTest/BaseCommands/Main" harness="http://spirent.com/NTAF/harness/iTest/BaseCommands/Main" harnessName="http://spirent.com/NTAF/harness/STC/commands/NonSequencer/Main" handle="project1.TestResultSetting" handle.inherit="false"/>
+                </item>
+                <item guid="7868f6e9-ce80-498b-ac00-958a12ae2794" action="GetTestResultSettingPaths" session="$session">
+                    <postProcessing>
+                        <analysisRules>
+                            <item>
+                                <extractorInfo extractorType="query">
+                                    <extractorProperties type="com.fnfr.svt.mapping.execution.extractors.QueryDataExtractorPropertyGroup">
+                                        <query>OutputBasePath()</query>
+                                    </extractorProperties>
+                                </extractorInfo>
+                                <processorInfo ruleType="store">
+                                    <ruleProperties type="com.fnfr.svt.execution.builtin.processors.StoreProcessorPropertyGroup">
+                                        <storageLocation>base_path</storageLocation>
+                                        <responseValue type="com.fnfr.documents.PropertyBoolean">false</responseValue>
+                                        <variable type="com.fnfr.documents.PropertyBoolean">true</variable>
+                                        <secret type="com.fnfr.documents.PropertyBoolean">false</secret>
+                                    </ruleProperties>
+                                </processorInfo>
+                            </item>
+                            <item>
+                                <extractorInfo extractorType="query">
+                                    <extractorProperties type="com.fnfr.svt.mapping.execution.extractors.QueryDataExtractorPropertyGroup">
+                                        <query>ResultDbBasePath()</query>
+                                    </extractorProperties>
+                                </extractorInfo>
+                                <processorInfo ruleType="store">
+                                    <ruleProperties type="com.fnfr.svt.execution.builtin.processors.StoreProcessorPropertyGroup">
+                                        <storageLocation>db_path</storageLocation>
+                                        <query>ResultDbBasePath</query>
+                                        <responseValue type="com.fnfr.documents.PropertyBoolean">false</responseValue>
+                                        <variable type="com.fnfr.documents.PropertyBoolean">true</variable>
+                                        <secret type="com.fnfr.documents.PropertyBoolean">false</secret>
+                                    </ruleProperties>
+                                </processorInfo>
+                            </item>
+                        </analysisRules>
+                    </postProcessing>
+                    <applicationProperties type="com.fnfr.itest.platform2.shared.documents.ntaf.NtafTransferableDocumentObject" action="GetTestResultSettingPaths" subharness="http://spirent.com/NTAF/harness/STC/commands/NonSequencer/Other/Other" harness="http://spirent.com/NTAF/harness/STC/commands/NonSequencer/Main" harnessName="http://spirent.com/NTAF/harness/STC/commands/NonSequencer/Main"/>
+                </item>
+                <item guid="8b7e71e9-6309-40db-ad34-5ffd84b09786" action="comment" useFieldsInCommand="false">
+                    <command>
+                        <body>Remove /tmp from path, as it is erroneous.</body>
+                    </command>
+                    <nestedSteps>
+                        <item guid="03de717d-4dc3-49ee-b963-777e3f6422ac" action="eval" useFieldsInCommand="false">
+                            <command>
+                                <body>set db_path [string map {&quot;/tmp/&quot; &quot;&quot;} $db_path]</body>
+                            </command>
+                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                        </item>
+                    </nestedSteps>
+                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                </item>
+                <item guid="da8ca60e-24e6-4dfc-a1e7-91dafaf649b3" action="eval" useFieldsInCommand="false">
+                    <command>
+                        <body>set path $base_path$db_path</body>
+                    </command>
+                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                </item>
+                <item guid="34fec79f-8be1-4f49-ba76-d4845846df2c" action="message" useFieldsInCommand="false">
+                    <command>
+                        <body>Information:TestCenter: Test results database path: $path</body>
+                    </command>
+                    <applicationProperties type="com.fnfr.svt.execution.builtin.exec.MessagePropertyGroup">
+                        <message inherit="false">TestCenter: Test results database path: $path</message>
+                    </applicationProperties>
+                </item>
+                <item guid="5eab2f20-1f0b-4374-a43b-03ad22323662" action="json" useFieldsInCommand="false">
+                    <command>
+                        <body>-action setJsonValue -editResponseStructure true -pathValue {&quot;ResultDbPath&quot;:&quot;$path&quot;}</body>
+                    </command>
+                    <applicationProperties type="com.fnfr.svt.execution.builtin.json.JsonPropertiesGroup">
+                        <action inherit="false">setJsonValue</action>
+                        <pathValue inherit="false" sub="true">{&quot;ResultDbPath&quot;:&quot;$path&quot;}</pathValue>
+                        <editResponseStructure inherit="false">true</editResponseStructure>
+                    </applicationProperties>
+                </item>
+            </steps>
+            <multilineDescription>Get the current setting for where STC stores test results are stored, for sequencer, etc. Because the default location is CURRENT_WORKING_DIR (the directory that Spirent TestCenter currently has open), the writing of test results frequently fails, due to OS permission restrictions. Therefore, it is recommended that the results directory be set to a location such at a temp directory or user&apos;s home directory via the _setResultsDirectory QuickCall.
+
+Returns JSON:
+{&quot;SaveResultsRelativeTo&quot;:&quot;value&quot;,&quot;ResultsDirectory&quot;:&quot;value&quot;}</multilineDescription>
+            <response>{&quot;ResultDbPath&quot;:&quot;value&quot;}</response>
+        </item>
+        <item name="RunSequencer" isPublic="true" isVBlock="true">
+            <description>Run the sequencer</description>
+            <steps>
+                <item guid="a1f893a7-1e67-4ead-917b-eb5a4cf35631" action="comment" useFieldsInCommand="false">
+                    <command>
+                        <body>Init</body>
+                    </command>
+                    <nestedSteps>
+                        <item guid="d1bfde29-8d2c-449e-89d4-cdf38e0ead70" action="eval" useFieldsInCommand="false">
+                            <command>
+                                <body>set ok 1</body>
+                            </command>
+                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                        </item>
+                        <item guid="d1d89b7d-37b5-4821-92ee-337e256099c0" action="eval" useFieldsInCommand="false">
+                            <command>
+                                <body>set current_command &quot;&quot;</body>
+                            </command>
+                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                        </item>
+                        <item guid="e22bbfcf-86dc-473e-ab0e-6733853b001a" action="eval" useFieldsInCommand="false">
+                            <command>
+                                <body>set prev_command &quot;unknown&quot;</body>
+                            </command>
+                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                        </item>
+                        <item guid="f729351b-c49c-4fe8-b95c-3d379079d0e4" action="eval" useFieldsInCommand="false">
+                            <command>
+                                <body>set test_state NONE</body>
+                            </command>
+                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                        </item>
+                        <item guid="eee55d59-90d9-4e70-96e8-c49f2ebb6ab7" action="eval" useFieldsInCommand="false">
+                            <command>
+                                <body>set state &quot;&quot;</body>
+                            </command>
+                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                        </item>
+                        <item guid="511f0706-95b4-498d-a679-9fed78dc70c4" action="eval" useFieldsInCommand="false">
+                            <command>
+                                <body>set prev_state &quot;unknown&quot;</body>
+                            </command>
+                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                        </item>
+                        <item guid="cdef08ea-e21b-4440-badc-a34bee437721" action="eval" useFieldsInCommand="false">
+                            <command>
+                                <body>set prev_paused_command &quot;unkonwn&quot;</body>
+                            </command>
+                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                        </item>
+                        <item guid="9a5eea91-5901-4b12-8654-d5a05087486e" action="eval" useFieldsInCommand="false">
+                            <command>
+                                <body>set i 0</body>
+                            </command>
+                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                        </item>
+                        <item guid="d398bc8b-73e5-439d-bb2d-22976e3f789d" action="sleep">
+                            <command>
+                                <body>5</body>
+                            </command>
+                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                        </item>
+                        <item guid="a23e90f9-79c9-414e-b658-31aa4b746516" action="if" useFieldsInCommand="false">
+                            <command>
+                                <body>$debug</body>
+                            </command>
+                            <nestedSteps>
+                                <item guid="8f8931af-c422-4695-84fe-9614956e2afe" action="then" useFieldsInCommand="false">
+                                    <nestedSteps>
+                                        <item guid="086b2f98-8864-4e89-a3e4-eb4852bf7805" action="if" useFieldsInCommand="false">
+                                            <command>
+                                                <body>[file exists file:/C:/tmp/debug.txt]</body>
+                                            </command>
+                                            <nestedSteps>
+                                                <item guid="3a0d5b56-bec7-44ab-bac7-d92bed894179" action="then" useFieldsInCommand="false">
+                                                    <nestedSteps>
+                                                        <item guid="0a50b90d-bab2-44e3-b589-20c6750130fa" action="eval" useFieldsInCommand="false">
+                                                            <command>
+                                                                <body>file delete file:/C:/tmp/debug.txt</body>
+                                                            </command>
+                                                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                                        </item>
+                                                    </nestedSteps>
+                                                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                                </item>
+                                            </nestedSteps>
+                                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                        </item>
+                                    </nestedSteps>
+                                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                </item>
+                            </nestedSteps>
+                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                        </item>
+                    </nestedSteps>
+                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                </item>
+                <item guid="2a8a2490-df08-4a1c-9d2e-58db121feff0" action="comment" useFieldsInCommand="false">
+                    <command>
+                        <body>Start sequencer</body>
+                    </command>
+                    <nestedSteps>
+                        <item guid="ac05f382-69f7-48a7-94d9-99a8dad62e3d" action="message" useFieldsInCommand="false">
+                            <command>
+                                <body>Information:Sequencer: Start</body>
+                            </command>
+                            <applicationProperties type="com.fnfr.svt.execution.builtin.exec.MessagePropertyGroup">
+                                <message inherit="false">Sequencer: Start</message>
+                            </applicationProperties>
+                        </item>
+                        <item guid="02231557-1fe8-40f0-8dd0-baf827348b31" action="startSequencer" session="$session">
+                            <postProcessing>
+                                <analysisRules>
+                                    <item>
+                                        <extractorInfo extractorType="contains">
+                                            <extractorProperties type="com.fnfr.svt.mapping.execution.extractors.ExtractorContainsPropertyGroup">
+                                                <searchString>Error</searchString>
+                                            </extractorProperties>
+                                        </extractorInfo>
+                                        <processorInfo ruleType="assert">
+                                            <ruleProperties type="com.fnfr.svt.execution.builtin.processors.AssertionPropertyGroup">
+                                                <expression>$value == 1</expression>
+                                                <actionsWhenTrue>
+                                                    <item actionId="FailTest">
+                                                        <actionProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                                    </item>
+                                                    <item actionId="ExitExecution">
+                                                        <actionProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                                    </item>
+                                                </actionsWhenTrue>
+                                            </ruleProperties>
+                                        </processorInfo>
+                                    </item>
+                                </analysisRules>
+                            </postProcessing>
+                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                        </item>
+                        <item guid="f44c2991-d521-4c66-bf41-e1d125f197fa" action="comment" useFieldsInCommand="false">
+                            <command>
+                                <body>Wait for sequencer to start</body>
+                            </command>
+                            <nestedSteps>
+                                <item guid="b1493118-d1b1-4a1f-9427-c6d2b18e2b19" action="message" useFieldsInCommand="false">
+                                    <command>
+                                        <body>Information:Sequencer: Waiting for first step to begin...</body>
+                                    </command>
+                                    <applicationProperties type="com.fnfr.svt.execution.builtin.exec.MessagePropertyGroup">
+                                        <message inherit="false">Sequencer: Waiting for first step to begin...</message>
+                                    </applicationProperties>
+                                </item>
+                                <item guid="b4b7c092-ba2f-4e11-963d-fbd27cbbf851" action="showSequencer" session="$session">
+                                    <postProcessing>
+                                        <analysisRules>
+                                            <item>
+                                                <extractorInfo extractorType="query">
+                                                    <extractorProperties type="com.fnfr.svt.mapping.execution.extractors.QueryDataExtractorPropertyGroup">
+                                                        <query>TestState()</query>
+                                                    </extractorProperties>
+                                                </extractorInfo>
+                                                <processorInfo ruleType="store">
+                                                    <ruleProperties type="com.fnfr.svt.execution.builtin.processors.StoreProcessorPropertyGroup">
+                                                        <storageLocation>test_state</storageLocation>
+                                                        <responseValue type="com.fnfr.documents.PropertyBoolean">false</responseValue>
+                                                        <variable type="com.fnfr.documents.PropertyBoolean">true</variable>
+                                                        <secret type="com.fnfr.documents.PropertyBoolean">false</secret>
+                                                    </ruleProperties>
+                                                </processorInfo>
+                                            </item>
+                                            <item>
+                                                <extractorInfo extractorType="query">
+                                                    <extractorProperties type="com.fnfr.svt.mapping.execution.extractors.QueryDataExtractorPropertyGroup">
+                                                        <query>CurrentCommand()</query>
+                                                    </extractorProperties>
+                                                </extractorInfo>
+                                                <processorInfo ruleType="store">
+                                                    <ruleProperties type="com.fnfr.svt.execution.builtin.processors.StoreProcessorPropertyGroup">
+                                                        <storageLocation>current_command</storageLocation>
+                                                        <responseValue type="com.fnfr.documents.PropertyBoolean">false</responseValue>
+                                                        <variable type="com.fnfr.documents.PropertyBoolean">true</variable>
+                                                        <secret type="com.fnfr.documents.PropertyBoolean">false</secret>
+                                                    </ruleProperties>
+                                                </processorInfo>
+                                            </item>
+                                            <item>
+                                                <extractorInfo extractorType="query">
+                                                    <extractorProperties type="com.fnfr.svt.mapping.execution.extractors.QueryDataExtractorPropertyGroup">
+                                                        <query>PausedCommand()</query>
+                                                    </extractorProperties>
+                                                </extractorInfo>
+                                                <processorInfo ruleType="store">
+                                                    <ruleProperties type="com.fnfr.svt.execution.builtin.processors.StoreProcessorPropertyGroup">
+                                                        <storageLocation>paused_command</storageLocation>
+                                                        <responseValue type="com.fnfr.documents.PropertyBoolean">false</responseValue>
+                                                        <variable type="com.fnfr.documents.PropertyBoolean">true</variable>
+                                                        <secret type="com.fnfr.documents.PropertyBoolean">false</secret>
+                                                    </ruleProperties>
+                                                </processorInfo>
+                                            </item>
+                                            <item>
+                                                <extractorInfo extractorType="query">
+                                                    <extractorProperties type="com.fnfr.svt.mapping.execution.extractors.QueryDataExtractorPropertyGroup">
+                                                        <query>State()</query>
+                                                    </extractorProperties>
+                                                </extractorInfo>
+                                                <processorInfo ruleType="store">
+                                                    <ruleProperties type="com.fnfr.svt.execution.builtin.processors.StoreProcessorPropertyGroup">
+                                                        <storageLocation>state</storageLocation>
+                                                        <responseValue type="com.fnfr.documents.PropertyBoolean">false</responseValue>
+                                                        <variable type="com.fnfr.documents.PropertyBoolean">true</variable>
+                                                        <secret type="com.fnfr.documents.PropertyBoolean">false</secret>
+                                                    </ruleProperties>
+                                                </processorInfo>
+                                            </item>
+                                            <item>
+                                                <extractorInfo extractorType="query">
+                                                    <extractorProperties type="com.fnfr.svt.mapping.execution.extractors.QueryDataExtractorPropertyGroup">
+                                                        <query>IsStepping()</query>
+                                                    </extractorProperties>
+                                                </extractorInfo>
+                                                <processorInfo ruleType="store">
+                                                    <ruleProperties type="com.fnfr.svt.execution.builtin.processors.StoreProcessorPropertyGroup">
+                                                        <storageLocation>stepping</storageLocation>
+                                                        <responseValue type="com.fnfr.documents.PropertyBoolean">false</responseValue>
+                                                        <variable type="com.fnfr.documents.PropertyBoolean">true</variable>
+                                                        <secret type="com.fnfr.documents.PropertyBoolean">false</secret>
+                                                    </ruleProperties>
+                                                </processorInfo>
+                                            </item>
+                                        </analysisRules>
+                                    </postProcessing>
+                                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                </item>
+                                <item guid="db8606db-8d62-4e52-963f-6b2161978832" action="if" useFieldsInCommand="false">
+                                    <command>
+                                        <body>$debug</body>
+                                    </command>
+                                    <nestedSteps>
+                                        <item guid="302ef55d-34cb-4838-9106-a19bd95fbfaa" action="then" useFieldsInCommand="false">
+                                            <nestedSteps>
+                                                <item guid="6bf020c4-b765-401a-925e-f7271c73b228" action="writeFile" useFieldsInCommand="false">
+                                                    <command>
+                                                        <body>file:/C:/tmp/debug.txt &quot;currentCommand=$current_command,pausedCommand=$paused_command,state=$state,testState=$test_state&quot;</body>
+                                                    </command>
+                                                    <applicationProperties type="com.fnfr.svt.execution.builtin.exec.WriteFilePropertyGroup"/>
+                                                </item>
+                                            </nestedSteps>
+                                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                        </item>
+                                    </nestedSteps>
+                                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                </item>
+                                <item guid="7a780a1f-9d8b-4af4-939f-28ed9e71a686" action="eval" useFieldsInCommand="false">
+                                    <command>
+                                        <body>set i 0</body>
+                                    </command>
+                                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                </item>
+                                <item guid="32b3066e-bd0e-4c07-bec6-eadc3765327d" action="while" useFieldsInCommand="false">
+                                    <command>
+                                        <body>$current_command == &quot;-&quot; </body>
+                                    </command>
+                                    <nestedSteps>
+                                        <item guid="c90332cd-e44a-4081-850c-8cb665d2a3ec" action="sleep">
+                                            <command>
+                                                <body>3</body>
+                                            </command>
+                                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                        </item>
+                                        <item guid="fc686d09-bd19-4164-a472-fa24f881286b" action="showSequencer" session="$session">
+                                            <postProcessing>
+                                                <analysisRules>
+                                                    <item>
+                                                        <extractorInfo extractorType="query">
+                                                            <extractorProperties type="com.fnfr.svt.mapping.execution.extractors.QueryDataExtractorPropertyGroup">
+                                                                <query>TestState()</query>
+                                                            </extractorProperties>
+                                                        </extractorInfo>
+                                                        <processorInfo ruleType="store">
+                                                            <ruleProperties type="com.fnfr.svt.execution.builtin.processors.StoreProcessorPropertyGroup">
+                                                                <storageLocation>test_state</storageLocation>
+                                                                <responseValue type="com.fnfr.documents.PropertyBoolean">false</responseValue>
+                                                                <variable type="com.fnfr.documents.PropertyBoolean">true</variable>
+                                                                <secret type="com.fnfr.documents.PropertyBoolean">false</secret>
+                                                            </ruleProperties>
+                                                        </processorInfo>
+                                                    </item>
+                                                    <item>
+                                                        <extractorInfo extractorType="query">
+                                                            <extractorProperties type="com.fnfr.svt.mapping.execution.extractors.QueryDataExtractorPropertyGroup">
+                                                                <query>CurrentCommand()</query>
+                                                            </extractorProperties>
+                                                        </extractorInfo>
+                                                        <processorInfo ruleType="store">
+                                                            <ruleProperties type="com.fnfr.svt.execution.builtin.processors.StoreProcessorPropertyGroup">
+                                                                <storageLocation>current_command</storageLocation>
+                                                                <responseValue type="com.fnfr.documents.PropertyBoolean">false</responseValue>
+                                                                <variable type="com.fnfr.documents.PropertyBoolean">true</variable>
+                                                                <secret type="com.fnfr.documents.PropertyBoolean">false</secret>
+                                                            </ruleProperties>
+                                                        </processorInfo>
+                                                    </item>
+                                                    <item>
+                                                        <extractorInfo extractorType="query">
+                                                            <extractorProperties type="com.fnfr.svt.mapping.execution.extractors.QueryDataExtractorPropertyGroup">
+                                                                <query>PausedCommand()</query>
+                                                            </extractorProperties>
+                                                        </extractorInfo>
+                                                        <processorInfo ruleType="store">
+                                                            <ruleProperties type="com.fnfr.svt.execution.builtin.processors.StoreProcessorPropertyGroup">
+                                                                <storageLocation>paused_command</storageLocation>
+                                                                <responseValue type="com.fnfr.documents.PropertyBoolean">false</responseValue>
+                                                                <variable type="com.fnfr.documents.PropertyBoolean">true</variable>
+                                                                <secret type="com.fnfr.documents.PropertyBoolean">false</secret>
+                                                            </ruleProperties>
+                                                        </processorInfo>
+                                                    </item>
+                                                    <item>
+                                                        <extractorInfo extractorType="query">
+                                                            <extractorProperties type="com.fnfr.svt.mapping.execution.extractors.QueryDataExtractorPropertyGroup">
+                                                                <query>State()</query>
+                                                            </extractorProperties>
+                                                        </extractorInfo>
+                                                        <processorInfo ruleType="store">
+                                                            <ruleProperties type="com.fnfr.svt.execution.builtin.processors.StoreProcessorPropertyGroup">
+                                                                <storageLocation>state</storageLocation>
+                                                                <responseValue type="com.fnfr.documents.PropertyBoolean">false</responseValue>
+                                                                <variable type="com.fnfr.documents.PropertyBoolean">true</variable>
+                                                                <secret type="com.fnfr.documents.PropertyBoolean">false</secret>
+                                                            </ruleProperties>
+                                                        </processorInfo>
+                                                    </item>
+                                                    <item>
+                                                        <extractorInfo extractorType="query">
+                                                            <extractorProperties type="com.fnfr.svt.mapping.execution.extractors.QueryDataExtractorPropertyGroup">
+                                                                <query>IsStepping()</query>
+                                                            </extractorProperties>
+                                                        </extractorInfo>
+                                                        <processorInfo ruleType="store">
+                                                            <ruleProperties type="com.fnfr.svt.execution.builtin.processors.StoreProcessorPropertyGroup">
+                                                                <storageLocation>stepping</storageLocation>
+                                                                <responseValue type="com.fnfr.documents.PropertyBoolean">false</responseValue>
+                                                                <variable type="com.fnfr.documents.PropertyBoolean">true</variable>
+                                                                <secret type="com.fnfr.documents.PropertyBoolean">false</secret>
+                                                            </ruleProperties>
+                                                        </processorInfo>
+                                                    </item>
+                                                </analysisRules>
+                                            </postProcessing>
+                                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                        </item>
+                                        <item guid="bc9fd0ab-d213-4f4f-bb65-0f8703a59a19" action="if" useFieldsInCommand="false">
+                                            <command>
+                                                <body>$debug</body>
+                                            </command>
+                                            <nestedSteps>
+                                                <item guid="9848de1f-a320-4af7-86bf-30ad928b0e0c" action="then" useFieldsInCommand="false">
+                                                    <nestedSteps>
+                                                        <item guid="1a496d9d-082c-449d-a179-b231a7a14511" action="writeFile" useFieldsInCommand="false">
+                                                            <command>
+                                                                <body>file:/C:/tmp/debug.txt &quot;currentCommand=$current_command,pausedCommand=$paused_command,state=$state,testState=$test_state&quot;</body>
+                                                            </command>
+                                                            <applicationProperties type="com.fnfr.svt.execution.builtin.exec.WriteFilePropertyGroup"/>
+                                                        </item>
+                                                    </nestedSteps>
+                                                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                                </item>
+                                            </nestedSteps>
+                                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                        </item>
+                                        <item guid="876692ee-f927-491c-a753-711edd6c4d6f" action="eval" useFieldsInCommand="false">
+                                            <command>
+                                                <body>incr i</body>
+                                            </command>
+                                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                        </item>
+                                        <item guid="0779e741-f5b4-484e-8c35-9fb490f51be7" action="if" useFieldsInCommand="false">
+                                            <command>
+                                                <body>$i &gt; 6</body>
+                                            </command>
+                                            <nestedSteps>
+                                                <item guid="54cd6394-afb6-473d-b96e-34f29be512ba" action="then" useFieldsInCommand="false">
+                                                    <nestedSteps>
+                                                        <item guid="a478a289-6e74-4370-87ca-3535370cdd27" action="comment" useFieldsInCommand="false">
+                                                            <postProcessing>
+                                                                <analysisRules>
+                                                                    <item>
+                                                                        <extractorInfo extractorType="none">
+                                                                            <extractorProperties type="com.fnfr.svt.documents.EmptyExtractorPropertyGroup"/>
+                                                                        </extractorInfo>
+                                                                        <processorInfo ruleType="assert">
+                                                                            <ruleProperties type="com.fnfr.svt.execution.builtin.processors.AssertionPropertyGroup">
+                                                                                <expression>1</expression>
+                                                                                <actionsWhenTrue>
+                                                                                    <item actionId="DeclareExecutionIssue">
+                                                                                        <actionProperties type="com.fnfr.svt.execution.builtin.actions.ExecutionIssuePropertyGroup">
+                                                                                            <message>Timeout waiting for sequencer to start</message>
+                                                                                        </actionProperties>
+                                                                                    </item>
+                                                                                    <item actionId="Eval">
+                                                                                        <actionProperties type="com.fnfr.svt.execution.builtin.actions.EvalActionPropertyGroup">
+                                                                                            <statement>set test_state &quot;Error: Timeout waiting for sequencer to start&quot;</statement>
+                                                                                        </actionProperties>
+                                                                                    </item>
+                                                                                    <item actionId="Eval">
+                                                                                        <actionProperties type="com.fnfr.svt.execution.builtin.actions.EvalActionPropertyGroup">
+                                                                                            <statement>set ok 0</statement>
+                                                                                        </actionProperties>
+                                                                                    </item>
+                                                                                    <item actionId="Break">
+                                                                                        <actionProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                                                                    </item>
+                                                                                </actionsWhenTrue>
+                                                                                <actionsWhenFalse>
+                                                                                    <item actionId="DeclareExecutionIssue">
+                                                                                        <actionProperties type="com.fnfr.svt.execution.builtin.actions.ExecutionIssuePropertyGroup" severity="OK">
+                                                                                            <message>Sequencer running...</message>
+                                                                                        </actionProperties>
+                                                                                    </item>
+                                                                                </actionsWhenFalse>
+                                                                            </ruleProperties>
+                                                                        </processorInfo>
+                                                                    </item>
+                                                                </analysisRules>
+                                                            </postProcessing>
+                                                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                                        </item>
+                                                    </nestedSteps>
+                                                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                                </item>
+                                            </nestedSteps>
+                                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                        </item>
+                                    </nestedSteps>
+                                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                </item>
+                            </nestedSteps>
+                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                        </item>
+                    </nestedSteps>
+                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                </item>
+                <item guid="c617eea7-ae1f-4363-ba4c-46b1cdc23b4f" action="if" useFieldsInCommand="false">
+                    <command>
+                        <body>$ok</body>
+                    </command>
+                    <nestedSteps>
+                        <item guid="31c848fd-efcf-4848-afef-cc36e07dd0e9" action="then" useFieldsInCommand="false">
+                            <nestedSteps>
+                                <item guid="dbae20c1-94a2-4d35-a242-89d11ace72cb" action="comment" useFieldsInCommand="false">
+                                    <command>
+                                        <body>Loop until sequence is complete</body>
+                                    </command>
+                                    <nestedSteps>
+                                        <item guid="bee844b7-46ae-4bff-9d30-e3d4cec3fafa" action="while" useFieldsInCommand="false">
+                                            <command>
+                                                <body>$test_state == &quot;NONE&quot; &amp;&amp; $state != &quot;PAUSE&quot;</body>
+                                            </command>
+                                            <nestedSteps>
+                                                <item guid="ec8a1fd8-1d27-4aa1-969c-66aa0631e4f8" action="sleep">
+                                                    <command>
+                                                        <body>10</body>
+                                                    </command>
+                                                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                                </item>
+                                                <item guid="a3aaee57-d7a4-452e-9c92-dfd9dd325dc2" action="showSequencer" session="$session">
+                                                    <postProcessing>
+                                                        <analysisRules>
+                                                            <item>
+                                                                <extractorInfo extractorType="query">
+                                                                    <extractorProperties type="com.fnfr.svt.mapping.execution.extractors.QueryDataExtractorPropertyGroup">
+                                                                        <query>TestState()</query>
+                                                                    </extractorProperties>
+                                                                </extractorInfo>
+                                                                <processorInfo ruleType="assert">
+                                                                    <ruleProperties type="com.fnfr.svt.execution.builtin.processors.AssertionPropertyGroup">
+                                                                        <expression>$value ne &quot;NONE&quot;</expression>
+                                                                        <actionsWhenTrue>
+                                                                            <item actionId="DeclareExecutionIssue">
+                                                                                <actionProperties type="com.fnfr.svt.execution.builtin.actions.ExecutionIssuePropertyGroup" severity="Information">
+                                                                                    <message>{auto_message_true}</message>
+                                                                                </actionProperties>
+                                                                            </item>
+                                                                        </actionsWhenTrue>
+                                                                        <actionsWhenFalse>
+                                                                            <item actionId="DeclareExecutionIssue">
+                                                                                <actionProperties type="com.fnfr.svt.execution.builtin.actions.ExecutionIssuePropertyGroup" severity="Information">
+                                                                                    <message>{auto_message_false}</message>
+                                                                                </actionProperties>
+                                                                            </item>
+                                                                        </actionsWhenFalse>
+                                                                    </ruleProperties>
+                                                                </processorInfo>
+                                                                <skip>true</skip>
+                                                            </item>
+                                                            <item>
+                                                                <extractorInfo extractorType="query">
+                                                                    <extractorProperties type="com.fnfr.svt.mapping.execution.extractors.QueryDataExtractorPropertyGroup">
+                                                                        <query>TestState()</query>
+                                                                    </extractorProperties>
+                                                                </extractorInfo>
+                                                                <processorInfo ruleType="store">
+                                                                    <ruleProperties type="com.fnfr.svt.execution.builtin.processors.StoreProcessorPropertyGroup">
+                                                                        <storageLocation>test_state</storageLocation>
+                                                                        <responseValue type="com.fnfr.documents.PropertyBoolean">false</responseValue>
+                                                                        <variable type="com.fnfr.documents.PropertyBoolean">true</variable>
+                                                                        <secret type="com.fnfr.documents.PropertyBoolean">false</secret>
+                                                                    </ruleProperties>
+                                                                </processorInfo>
+                                                            </item>
+                                                            <item>
+                                                                <extractorInfo extractorType="query">
+                                                                    <extractorProperties type="com.fnfr.svt.mapping.execution.extractors.QueryDataExtractorPropertyGroup">
+                                                                        <query>CurrentCommand()</query>
+                                                                    </extractorProperties>
+                                                                </extractorInfo>
+                                                                <processorInfo ruleType="store">
+                                                                    <ruleProperties type="com.fnfr.svt.execution.builtin.processors.StoreProcessorPropertyGroup">
+                                                                        <storageLocation>current_command</storageLocation>
+                                                                        <responseValue type="com.fnfr.documents.PropertyBoolean">false</responseValue>
+                                                                        <variable type="com.fnfr.documents.PropertyBoolean">true</variable>
+                                                                        <secret type="com.fnfr.documents.PropertyBoolean">false</secret>
+                                                                    </ruleProperties>
+                                                                </processorInfo>
+                                                            </item>
+                                                            <item>
+                                                                <extractorInfo extractorType="query">
+                                                                    <extractorProperties type="com.fnfr.svt.mapping.execution.extractors.QueryDataExtractorPropertyGroup">
+                                                                        <query>PausedCommand()</query>
+                                                                    </extractorProperties>
+                                                                </extractorInfo>
+                                                                <processorInfo ruleType="store">
+                                                                    <ruleProperties type="com.fnfr.svt.execution.builtin.processors.StoreProcessorPropertyGroup">
+                                                                        <storageLocation>paused_command</storageLocation>
+                                                                        <responseValue type="com.fnfr.documents.PropertyBoolean">false</responseValue>
+                                                                        <variable type="com.fnfr.documents.PropertyBoolean">true</variable>
+                                                                        <secret type="com.fnfr.documents.PropertyBoolean">false</secret>
+                                                                    </ruleProperties>
+                                                                </processorInfo>
+                                                            </item>
+                                                            <item>
+                                                                <extractorInfo extractorType="query">
+                                                                    <extractorProperties type="com.fnfr.svt.mapping.execution.extractors.QueryDataExtractorPropertyGroup">
+                                                                        <query>State()</query>
+                                                                    </extractorProperties>
+                                                                </extractorInfo>
+                                                                <processorInfo ruleType="store">
+                                                                    <ruleProperties type="com.fnfr.svt.execution.builtin.processors.StoreProcessorPropertyGroup">
+                                                                        <storageLocation>state</storageLocation>
+                                                                        <responseValue type="com.fnfr.documents.PropertyBoolean">false</responseValue>
+                                                                        <variable type="com.fnfr.documents.PropertyBoolean">true</variable>
+                                                                        <secret type="com.fnfr.documents.PropertyBoolean">false</secret>
+                                                                    </ruleProperties>
+                                                                </processorInfo>
+                                                            </item>
+                                                        </analysisRules>
+                                                    </postProcessing>
+                                                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                                </item>
+                                                <item guid="b6d7a208-5e8d-4c83-8180-06ea09e97b06" action="if" useFieldsInCommand="false">
+                                                    <command>
+                                                        <body>$debug</body>
+                                                    </command>
+                                                    <nestedSteps>
+                                                        <item guid="36a581a3-0026-4016-abbd-39f7817851de" action="then" useFieldsInCommand="false">
+                                                            <nestedSteps>
+                                                                <item guid="c8253749-e647-4a76-9d3a-094557db3d66" action="writeFile" useFieldsInCommand="false">
+                                                                    <command>
+                                                                        <body>file:/C:/tmp/debug.txt &quot;currentCommand=$current_command,pausedCommand=$paused_command,state=$state,testState=$test_state&quot;</body>
+                                                                    </command>
+                                                                    <applicationProperties type="com.fnfr.svt.execution.builtin.exec.WriteFilePropertyGroup"/>
+                                                                </item>
+                                                            </nestedSteps>
+                                                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                                        </item>
+                                                    </nestedSteps>
+                                                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                                </item>
+                                                <item guid="39d39c0a-dbbb-4ecb-a4b6-604fed424809" action="if" useFieldsInCommand="false">
+                                                    <command>
+                                                        <body>$current_command != $prev_command &amp;&amp; $current_command != &quot;-&quot;</body>
+                                                    </command>
+                                                    <nestedSteps>
+                                                        <item guid="275cf7bb-1735-4759-8f0e-e5d6b94789ac" action="then" useFieldsInCommand="false">
+                                                            <nestedSteps>
+                                                                <item guid="6a207aa2-91c0-4579-a37d-486fdc499362" action="message" useFieldsInCommand="false">
+                                                                    <command>
+                                                                        <body>Information:Sequencer command: $current_command</body>
+                                                                    </command>
+                                                                    <applicationProperties type="com.fnfr.svt.execution.builtin.exec.MessagePropertyGroup">
+                                                                        <message inherit="false">Sequencer command: $current_command</message>
+                                                                    </applicationProperties>
+                                                                </item>
+                                                                <item guid="61ce8f6f-2efb-48b7-95f1-2ef253f0b7a4" action="eval" useFieldsInCommand="false">
+                                                                    <command>
+                                                                        <body>set prev_command $current_command</body>
+                                                                    </command>
+                                                                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                                                </item>
+                                                            </nestedSteps>
+                                                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                                        </item>
+                                                    </nestedSteps>
+                                                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                                </item>
+                                                <item guid="3b64d973-e5ce-4c74-85e1-b1657f1fdef0" action="if" useFieldsInCommand="false">
+                                                    <command>
+                                                        <body>$state != $prev_state</body>
+                                                    </command>
+                                                    <nestedSteps>
+                                                        <item guid="7b8ca353-c9a2-4213-9ddd-1fa8f7ade415" action="then" useFieldsInCommand="false">
+                                                            <nestedSteps>
+                                                                <item guid="40836df2-5dad-4b1a-b11b-dc08f97c1584" action="message" useFieldsInCommand="false">
+                                                                    <command>
+                                                                        <body>Information:Sequencer state: $state</body>
+                                                                    </command>
+                                                                    <applicationProperties type="com.fnfr.svt.execution.builtin.exec.MessagePropertyGroup">
+                                                                        <message inherit="false">Sequencer state: $state</message>
+                                                                    </applicationProperties>
+                                                                </item>
+                                                                <item guid="d3254a15-79d8-450a-8be9-a3c7979b894b" action="eval" useFieldsInCommand="false">
+                                                                    <command>
+                                                                        <body>set prev_state $state</body>
+                                                                    </command>
+                                                                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                                                </item>
+                                                            </nestedSteps>
+                                                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                                        </item>
+                                                    </nestedSteps>
+                                                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                                </item>
+                                                <item guid="251595e3-0741-44af-8c06-ba0cd50eb442" action="if" useFieldsInCommand="false">
+                                                    <command>
+                                                        <body>$paused_command != $prev_paused_command &amp;&amp; $paused_command != &quot;-&quot;</body>
+                                                    </command>
+                                                    <nestedSteps>
+                                                        <item guid="9f7941b4-e86b-44a2-815b-31212753965f" action="then" useFieldsInCommand="false">
+                                                            <nestedSteps>
+                                                                <item guid="cda635fa-a13f-4cdb-98d4-1d53de0e00ad" action="message" useFieldsInCommand="false">
+                                                                    <command>
+                                                                        <body>Information:Sequencer paused: $paused_command;</body>
+                                                                    </command>
+                                                                    <applicationProperties type="com.fnfr.svt.execution.builtin.exec.MessagePropertyGroup">
+                                                                        <message inherit="false">Sequencer paused: $paused_command;</message>
+                                                                    </applicationProperties>
+                                                                </item>
+                                                                <item guid="d60dfa56-9898-4249-a159-ccca03f22001" action="eval" useFieldsInCommand="false">
+                                                                    <command>
+                                                                        <body>set prev_paused_command $paused_command</body>
+                                                                    </command>
+                                                                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                                                </item>
+                                                            </nestedSteps>
+                                                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                                        </item>
+                                                    </nestedSteps>
+                                                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                                </item>
+                                                <item guid="7f5e6e8d-0b77-4255-8c14-0bcb34007531" action="if" useFieldsInCommand="false">
+                                                    <command>
+                                                        <body>$current_command == &quot;-&quot; &amp;&amp; $paused_command == &quot;-&quot; &amp;&amp; $test_state != &quot;NONE&quot;</body>
+                                                    </command>
+                                                    <nestedSteps>
+                                                        <item guid="dcfe93fe-4cf0-4780-adeb-11d57e36e03d" action="then" useFieldsInCommand="false">
+                                                            <nestedSteps>
+                                                                <item guid="b61d81f1-f48a-4e24-96ae-fc15bf0ea768" action="break" useFieldsInCommand="false">
+                                                                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                                                </item>
+                                                            </nestedSteps>
+                                                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                                        </item>
+                                                    </nestedSteps>
+                                                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                                </item>
+                                            </nestedSteps>
+                                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                        </item>
+                                    </nestedSteps>
+                                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                </item>
+                            </nestedSteps>
+                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                        </item>
+                    </nestedSteps>
+                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                </item>
+                <item guid="a846e53a-ff47-4e6f-b3f7-12e99273f1ef" action="json" useFieldsInCommand="false">
+                    <command>
+                        <body>-action setJsonValue -editResponseStructure true -pathValue {&quot;TestState&quot;:&quot;$test_state&quot;}</body>
+                    </command>
+                    <applicationProperties type="com.fnfr.svt.execution.builtin.json.JsonPropertiesGroup">
+                        <action inherit="false">setJsonValue</action>
+                        <pathValue inherit="false" sub="true">{&quot;TestState&quot;:&quot;$test_state&quot;}</pathValue>
+                        <editResponseStructure inherit="false">true</editResponseStructure>
+                    </applicationProperties>
+                </item>
+            </steps>
+            <multilineDescription>Run the sequencer and wait for completion.
+
+Returns JSON:
+{&quot;TestState&quot;:&quot;value&quot;}</multilineDescription>
+            <arguments>
+                <item name="debug">
+                    <description>1=output state changes to C:\\tmp\\debug.txt</description>
+                    <defaultValue>0</defaultValue>
+                </item>
+            </arguments>
+            <response>{&quot;TestState&quot;:&quot;value&quot;}</response>
+        </item>
+        <item name="CopyResultsDb" isPublic="true">
+            <steps>
+                <item guid="b0fbd2ac-37eb-40a7-9dd8-69f6cde62013" action="if" useFieldsInCommand="false">
+                    <command>
+                        <body>$LabServer == &quot;true&quot;</body>
+                    </command>
+                    <nestedSteps>
+                        <item guid="8a5ecd92-abdd-469d-b1d6-2c80b74285f2" action="then" useFieldsInCommand="false">
+                            <nestedSteps>
+                                <item guid="b3ab53b2-0abe-4901-9200-b75fdf0c9ed3" action="if" useFieldsInCommand="false">
+                                    <command>
+                                        <body>$docker</body>
+                                    </command>
+                                    <nestedSteps>
+                                        <item guid="cd98d9a2-03ad-40ae-a3b1-52e57ed7c4d2" action="then" useFieldsInCommand="false">
+                                            <nestedSteps>
+                                                <item guid="c891c189-ccd8-4cf5-830b-e680bfa3b36a" action="comment" useFieldsInCommand="false">
+                                                    <command>
+                                                        <body>Copy results database from docker container to LabServer host</body>
+                                                    </command>
+                                                    <nestedSteps>
+                                                        <item guid="cd293a6f-23ef-4dff-8642-3ab78490bd6a" action="open" session="ssh">
+                                                            <command>
+                                                                <body>project://my_project/session_profiles/ssh.ffsp</body>
+                                                            </command>
+                                                            <applicationProperties type="com.fnfr.svt.documents.OpenStepPropertyGroup">
+                                                                <stepProperties type="com.fnfr.svt.editors.terminal.documents.StepDefaultProperties"/>
+                                                                <sessionProperties type="com.fnfr.svt.applications.ssh.documents.SSHProperties"/>
+                                                                <sessionClass type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                                                <sessionVersion type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                                            </applicationProperties>
+                                                        </item>
+                                                        <item guid="cbea4259-8625-4700-8d3d-58d1ac35363d" action="command" session="ssh" skip="true" useFieldsInCommand="false">
+                                                            <command>
+                                                                <body>docker exec -ti $(docker ps -q -f ancestor=$(docker images -q registry.oriontest.net/labserver)) /bin/bash</body>
+                                                            </command>
+                                                            <applicationProperties type="com.fnfr.svt.editors.terminal.documents.StepDefaultProperties"/>
+                                                        </item>
+                                                        <item guid="52aca035-e63e-459c-af3c-84068e89b794" action="command" session="ssh">
+                                                            <command>
+                                                                <body>docker cp labserver:/tmp/SAL_ID-0000000000-RFC2544_Throughput_no_DHCP /tmp</body>
+                                                            </command>
+                                                            <applicationProperties type="com.fnfr.svt.editors.terminal.documents.StepDefaultProperties"/>
+                                                        </item>
+                                                        <item guid="a2860302-d6a0-4796-97f0-a6ae68025d10" action="close" session="ssh" useFieldsInCommand="false">
+                                                            <applicationProperties type="com.fnfr.svt.editors.terminal.documents.StepDefaultProperties"/>
+                                                        </item>
+                                                    </nestedSteps>
+                                                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                                </item>
+                                                <item guid="d678bee1-11ae-4241-aadf-747adad15d60" action="comment" useFieldsInCommand="false">
+                                                    <command>
+                                                        <body>Copy results database from LabServer host to local folder</body>
+                                                    </command>
+                                                    <nestedSteps>
+                                                        <item guid="142e0052-4a56-4ae6-8bf6-1abefa8d3d19" action="open" session="cmd">
+                                                            <command>
+                                                                <body>application:com.fnfr.svt.applications.cmd</body>
+                                                            </command>
+                                                            <applicationProperties type="com.fnfr.svt.documents.OpenStepPropertyGroup">
+                                                                <stepProperties type="com.fnfr.svt.editors.terminal.documents.StepDefaultProperties"/>
+                                                                <sessionProperties type="com.fnfr.svt.applications.cmd.CmdSessionProperties"/>
+                                                                <sessionClass type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                                                <sessionVersion type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                                            </applicationProperties>
+                                                        </item>
+                                                        <item guid="756a8ed7-f91d-449a-a8fd-77542f9996be" action="command" session="cmd">
+                                                            <command>
+                                                                <body>scp -r user1@192.168.245.131:$results_path C:\\tmp</body>
+                                                            </command>
+                                                            <applicationProperties type="com.fnfr.svt.editors.terminal.documents.StepDefaultProperties"/>
+                                                        </item>
+                                                        <item guid="3724c892-15e8-48a8-99a6-813867fdda81" action="close" session="cmd" useFieldsInCommand="false">
+                                                            <applicationProperties type="com.fnfr.svt.editors.terminal.documents.StepDefaultProperties"/>
+                                                        </item>
+                                                    </nestedSteps>
+                                                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                                </item>
+                                            </nestedSteps>
+                                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                        </item>
+                                        <item guid="6717d740-12ff-4930-a9f2-61ecba16d8e0" action="else" useFieldsInCommand="false">
+                                            <nestedSteps>
+                                                <item guid="df0720a0-b296-4d0b-bf3d-d55feac95653" action="comment" useFieldsInCommand="false">
+                                                    <command>
+                                                        <body>Insert steps here for when the expression evaluates to false</body>
+                                                    </command>
+                                                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                                </item>
+                                            </nestedSteps>
+                                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                        </item>
+                                    </nestedSteps>
+                                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                </item>
+                            </nestedSteps>
+                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                        </item>
+                        <item guid="a85c070d-39b7-4b94-9f57-58fe033901de" action="else" useFieldsInCommand="false">
+                            <nestedSteps>
+                                <item guid="9df819f4-c762-41a5-9d4a-daa2640207bc" action="comment" useFieldsInCommand="false">
+                                    <command>
+                                        <body>Insert steps here for when the expression evaluates to false</body>
+                                    </command>
+                                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                </item>
+                            </nestedSteps>
+                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                        </item>
+                    </nestedSteps>
+                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                </item>
+            </steps>
+            <arguments>
+                <item name="sourcePath">
+                    <isMandatory>true</isMandatory>
+                </item>
+                <item name="destPath">
+                    <description>Destination folder</description>
+                </item>
+                <item name="LabServer">
+                    <description>true=LabServer is being used</description>
+                    <defaultValue>false</defaultValue>
+                    <isMandatory>true</isMandatory>
+                </item>
+                <item name="docker">
+                    <description>1=LabServer is in a docker container
+0=LabServer is in regular file system</description>
+                    <defaultValue>1</defaultValue>
+                    <isMandatory>true</isMandatory>
+                </item>
+            </arguments>
+            <response>{}</response>
+        </item>
+        <item name="DeleteResultsDb" isPublic="true">
+            <steps>
+                <item guid="976ddfb9-8195-48b0-9d50-ab6a02c952cf" action="if" useFieldsInCommand="false">
+                    <command>
+                        <body>$LabServer == &quot;true&quot;</body>
+                    </command>
+                    <nestedSteps>
+                        <item guid="696c48fe-2a57-4419-bfeb-be90b561170f" action="then" useFieldsInCommand="false">
+                            <nestedSteps>
+                                <item guid="16b8ea74-4975-4127-a6b2-1a56dfcd3938" action="open" session="ssh">
+                                    <command>
+                                        <body>project://my_project/session_profiles/ssh.ffsp</body>
+                                    </command>
+                                    <applicationProperties type="com.fnfr.svt.documents.OpenStepPropertyGroup">
+                                        <stepProperties type="com.fnfr.svt.editors.terminal.documents.StepDefaultProperties"/>
+                                        <sessionProperties type="com.fnfr.svt.applications.ssh.documents.SSHProperties"/>
+                                        <sessionClass type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                        <sessionVersion type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                    </applicationProperties>
+                                </item>
+                                <item guid="c4d51409-a56c-48ec-b152-39837ac3d3be" action="if" useFieldsInCommand="false">
+                                    <command>
+                                        <body>$docker</body>
+                                    </command>
+                                    <nestedSteps>
+                                        <item guid="221e3fde-3611-4800-bad6-216e7dc59a08" action="then" useFieldsInCommand="false">
+                                            <nestedSteps>
+                                                <item guid="e7520dfe-6da9-4105-b605-04c85bf03a9f" action="command" session="ssh">
+                                                    <command>
+                                                        <body>docker exec labserver rm -r $results_path</body>
+                                                    </command>
+                                                    <applicationProperties type="com.fnfr.svt.editors.terminal.documents.StepDefaultProperties"/>
+                                                </item>
+                                            </nestedSteps>
+                                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                        </item>
+                                        <item guid="1806ca6c-abe6-4a9e-8dcd-7e9757b6604f" action="else" useFieldsInCommand="false">
+                                            <nestedSteps>
+                                                <item guid="d5bd330a-0294-4892-9cb2-f28127140386" action="command" session="ssh">
+                                                    <command>
+                                                        <body>rm -r $results_path</body>
+                                                    </command>
+                                                    <applicationProperties type="com.fnfr.svt.editors.terminal.documents.StepDefaultProperties"/>
+                                                </item>
+                                            </nestedSteps>
+                                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                        </item>
+                                    </nestedSteps>
+                                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                </item>
+                                <item guid="e153d398-7874-4cc8-9b0d-3ac38274519b" action="close" session="ssh">
+                                    <applicationProperties type="com.fnfr.svt.editors.terminal.documents.StepDefaultProperties"/>
+                                </item>
+                            </nestedSteps>
+                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                        </item>
+                        <item guid="eab5f9b3-096f-4ef9-bedd-4996f4a42088" action="else" useFieldsInCommand="false">
+                            <nestedSteps>
+                                <item guid="32a6e858-4f68-4689-9779-b9277193493f" action="eval" useFieldsInCommand="false">
+                                    <command>
+                                        <body>set uri [file pathToUri $results_path]</body>
+                                    </command>
+                                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                </item>
+                                <item guid="17dffabc-cd40-42c1-bc32-a14d304fb423" action="eval" useFieldsInCommand="false">
+                                    <command>
+                                        <body>file delete $uri</body>
+                                    </command>
+                                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                </item>
+                            </nestedSteps>
+                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                        </item>
+                    </nestedSteps>
+                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                </item>
+            </steps>
+            <arguments>
+                <item name="results_path">
+                    <isMandatory>true</isMandatory>
+                </item>
+                <item name="LabServer">
+                    <description>1=LabServer is being used</description>
+                    <defaultValue>0</defaultValue>
+                    <isMandatory>true</isMandatory>
+                </item>
+                <item name="docker">
+                    <description>1=LabServer is in a docker container
+0=LabServer is in regular file system</description>
+                    <defaultValue>1</defaultValue>
+                    <isMandatory>true</isMandatory>
+                </item>
+            </arguments>
+            <response>{}</response>
+        </item>
+        <item name="DownloadLabServerFiles" isPublic="true" isVBlock="true">
+            <description>Download STC LabServer Database Files</description>
+            <steps>
+                <item guid="7e2fccfe-e65a-45b3-a30c-627c7deedf22" action="eval" useFieldsInCommand="false">
+                    <command>
+                        <body>set status ok</body>
+                    </command>
+                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                </item>
+                <item guid="ce1bd210-ec70-4028-926f-e831f722eea7" action="eval" useFieldsInCommand="false">
+                    <command>
+                        <body>set file_list {}</body>
+                    </command>
+                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                </item>
+                <item guid="c5986134-1341-4bbc-86ef-b8835078e8cf" action="comment" useFieldsInCommand="false">
+                    <command>
+                        <body>Make sure results directory exists</body>
+                    </command>
+                    <nestedSteps>
+                        <item guid="7741e958-aa8b-4961-b48a-9740a994b8dc" action="eval" useFieldsInCommand="false">
+                            <command>
+                                <body>set uri [file pathToUri $resultDirectory]</body>
+                            </command>
+                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                        </item>
+                        <item guid="bd19b4a8-2885-4a7c-942f-7d66dc85b89f" action="eval" useFieldsInCommand="false">
+                            <command>
+                                <body>file mkdir $uri</body>
+                            </command>
+                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                        </item>
+                    </nestedSteps>
+                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                </item>
+                <item guid="bb91d16f-e856-4e73-b8f4-8fdb77b3ae21" action="comment" useFieldsInCommand="false">
+                    <command>
+                        <body>Create timestamp dir</body>
+                    </command>
+                    <nestedSteps>
+                        <item guid="4f2f851c-58b1-427f-b502-6207009e6982" action="eval" useFieldsInCommand="false">
+                            <command>
+                                <body>set timestamp [info timestamp yyyy-MM-dd_HH-mm-ss]</body>
+                            </command>
+                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                        </item>
+                        <item guid="c0740d12-c9a6-4753-bdad-846a70d45dd7" action="eval" useFieldsInCommand="false">
+                            <command>
+                                <body>set uri &quot;$uri/$timestamp&quot;</body>
+                            </command>
+                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                        </item>
+                        <item guid="41457d8e-3c17-48c8-aae3-fe0d46278c65" action="eval" useFieldsInCommand="false">
+                            <command>
+                                <body>file mkdir $uri</body>
+                            </command>
+                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                        </item>
+                    </nestedSteps>
+                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                </item>
+                <item guid="eb04465d-a3d7-4278-9dea-1c1cd65c3b33" action="comment" useFieldsInCommand="false">
+                    <command>
+                        <body>Remove trailing / because it doesn&apos;t work with curl</body>
+                    </command>
+                    <nestedSteps>
+                        <item guid="21258946-2890-4025-916b-565a2f657e65" action="eval" useFieldsInCommand="false">
+                            <command>
+                                <body>set labserverBaseUrl [string trim $labserverBaseUrl /]</body>
+                            </command>
+                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                        </item>
+                    </nestedSteps>
+                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                </item>
+                <item guid="11edfd7a-3eff-4939-9e1b-de36f028239d" action="comment" useFieldsInCommand="false">
+                    <command>
+                        <body>Download list of files for session ID</body>
+                    </command>
+                    <nestedSteps>
+                        <item guid="33bfc5f6-aa3b-4d14-a3c2-9612f8a8ff55" action="open" session="cmd">
+                            <command>
+                                <body>application:com.fnfr.svt.applications.cmd</body>
+                            </command>
+                            <applicationProperties type="com.fnfr.svt.documents.OpenStepPropertyGroup">
+                                <stepProperties type="com.fnfr.svt.editors.terminal.documents.StepDefaultProperties"/>
+                                <sessionProperties type="com.fnfr.svt.applications.cmd.CmdSessionProperties"/>
+                                <sessionClass type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                <sessionVersion type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                            </applicationProperties>
+                        </item>
+                        <item guid="26a371cd-5245-4642-ae45-8d2b5daa8440" action="command" session="cmd">
+                            <command>
+                                <body>cd [file uriToPath $uri]</body>
+                            </command>
+                            <applicationProperties type="com.fnfr.svt.editors.terminal.documents.StepDefaultProperties"/>
+                        </item>
+                        <item guid="3b3e63c1-8781-45db-9a83-5ba53902ea76" action="command" session="cmd" estimatedStepExecutionTime="4.949" useResponseMapLibraryApplicability="false">
+                            <command>
+                                <body>curl -G -H \\&quot;X-STC-API-Session: $sessionID\\&quot; -H \\&quot;Content-Type: application/json\\&quot; $labserverBaseUrl</body>
+                            </command>
+                            <postProcessing>
+                                <analysisRules>
+                                    <item>
+                                        <extractorInfo extractorType="contains">
+                                            <extractorProperties type="com.fnfr.svt.mapping.execution.extractors.ExtractorContainsPropertyGroup">
+                                                <searchString>Warning: Remote filename has no length!</searchString>
+                                            </extractorProperties>
+                                        </extractorInfo>
+                                        <processorInfo ruleType="assert">
+                                            <ruleProperties type="com.fnfr.svt.execution.builtin.processors.AssertionPropertyGroup">
+                                                <expression>$value == 1</expression>
+                                                <actionsWhenTrue>
+                                                    <item actionId="FailTest">
+                                                        <actionProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                                    </item>
+                                                    <item actionId="DeclareExecutionIssue">
+                                                        <actionProperties type="com.fnfr.svt.execution.builtin.actions.ExecutionIssuePropertyGroup">
+                                                            <message>Remote filename has no length!</message>
+                                                        </actionProperties>
+                                                    </item>
+                                                    <item actionId="DeclareExecutionIssue">
+                                                        <actionProperties type="com.fnfr.svt.execution.builtin.actions.ExecutionIssuePropertyGroup" severity="Warning">
+                                                            <message>Make sure path doe</message>
+                                                        </actionProperties>
+                                                    </item>
+                                                </actionsWhenTrue>
+                                            </ruleProperties>
+                                        </processorInfo>
+                                        <skip>true</skip>
+                                    </item>
+                                    <item>
+                                        <extractorInfo extractorType="query">
+                                            <extractorProperties type="com.fnfr.svt.mapping.execution.extractors.QueryDataExtractorPropertyGroup">
+                                                <query>mapped/Json/item</query>
+                                            </extractorProperties>
+                                        </extractorInfo>
+                                        <processorInfo ruleType="store">
+                                            <ruleProperties type="com.fnfr.svt.execution.builtin.processors.StoreProcessorPropertyGroup">
+                                                <storageLocation>file_list</storageLocation>
+                                                <storeInAList>true</storeInAList>
+                                                <responseValue type="com.fnfr.documents.PropertyBoolean">false</responseValue>
+                                                <variable type="com.fnfr.documents.PropertyBoolean">true</variable>
+                                                <secret type="com.fnfr.documents.PropertyBoolean">false</secret>
+                                            </ruleProperties>
+                                        </processorInfo>
+                                        <skip>true</skip>
+                                    </item>
+                                    <item>
+                                        <extractorInfo extractorType="contains">
+                                            <extractorProperties type="com.fnfr.svt.mapping.execution.extractors.ExtractorContainsPropertyGroup">
+                                                <searchString>session not found</searchString>
+                                            </extractorProperties>
+                                        </extractorInfo>
+                                        <processorInfo ruleType="assert">
+                                            <ruleProperties type="com.fnfr.svt.execution.builtin.processors.AssertionPropertyGroup">
+                                                <expression>$value == 1</expression>
+                                                <actionsWhenTrue>
+                                                    <item actionId="FailTest">
+                                                        <actionProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                                    </item>
+                                                    <item actionId="DeclareExecutionIssue">
+                                                        <actionProperties type="com.fnfr.svt.execution.builtin.actions.ExecutionIssuePropertyGroup">
+                                                            <message>Session not found: $sessionID</message>
+                                                        </actionProperties>
+                                                    </item>
+                                                    <item actionId="Eval">
+                                                        <actionProperties type="com.fnfr.svt.execution.builtin.actions.EvalActionPropertyGroup">
+                                                            <statement>set status &quot;Session not found: $sessionID&quot;</statement>
+                                                        </actionProperties>
+                                                    </item>
+                                                    <item actionId="SkipRemainingRules">
+                                                        <actionProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                                    </item>
+                                                </actionsWhenTrue>
+                                            </ruleProperties>
+                                        </processorInfo>
+                                    </item>
+                                </analysisRules>
+                                <storeResponseAt>response</storeResponseAt>
+                                <storeResponseText>true</storeResponseText>
+                            </postProcessing>
+                            <applicationProperties type="com.fnfr.svt.editors.terminal.documents.StepDefaultProperties"/>
+                            <useResponseMapLibraryFromSession>false</useResponseMapLibraryFromSession>
+                            <performResponseMapping>false</performResponseMapping>
+                        </item>
+                        <item guid="05384763-beb5-44be-bcbb-27d9c0703441" action="comment" useFieldsInCommand="false">
+                            <command>
+                                <body>remove embedded CRLF from response</body>
+                            </command>
+                            <nestedSteps>
+                                <item guid="4a389589-87cf-4a7e-b2b7-46f139939435" action="eval" useFieldsInCommand="false">
+                                    <command>
+                                        <body>set response [string map {\\n &quot;&quot; \\r &quot;&quot;} $response]</body>
+                                    </command>
+                                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                </item>
+                            </nestedSteps>
+                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                        </item>
+                        <item guid="fca13c14-212f-46a7-9092-e353432dca9e" action="comment" useFieldsInCommand="false">
+                            <command>
+                                <body>Get text between [ ] and save as list</body>
+                            </command>
+                            <nestedSteps>
+                                <item guid="55434468-290c-43c6-9968-70af1cf3d4e5" action="eval" useFieldsInCommand="false">
+                                    <command>
+                                        <body>set p1 [string first \\[ $response] ; incr p1</body>
+                                    </command>
+                                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                </item>
+                                <item guid="92ea4b37-5be5-4016-b237-f0968d3668dd" action="eval" useFieldsInCommand="false">
+                                    <command>
+                                        <body>set p2 [string last \\] $response] ; incr p2 -1</body>
+                                    </command>
+                                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                </item>
+                                <item guid="f86759d2-9633-47fb-86c1-08932cba8661" action="eval" useFieldsInCommand="false">
+                                    <command>
+                                        <body>set temp [string range $response $p1 $p2]</body>
+                                    </command>
+                                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                </item>
+                                <item guid="2aae0921-fe22-4711-bd12-f5920b47f547" action="eval" useFieldsInCommand="false">
+                                    <command>
+                                        <body>set temp [string map {\\&quot;,\\&quot; \\&quot;|\\&quot;} $temp]  </body>
+                                    </command>
+                                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                </item>
+                                <item guid="b283d768-3beb-416a-af76-d9e6d6fe83dd" action="eval" useFieldsInCommand="false">
+                                    <command>
+                                        <body>set file_list [split $temp |]</body>
+                                    </command>
+                                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                </item>
+                            </nestedSteps>
+                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                        </item>
+                    </nestedSteps>
+                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                </item>
+                <item guid="c37df55f-b810-4597-954e-87b52f61cae4" action="comment" useFieldsInCommand="false">
+                    <command>
+                        <body>Download each file to current directory</body>
+                    </command>
+                    <nestedSteps>
+                        <item guid="8320fd6f-02fc-4312-ab00-949f9d0cb49b" action="if" useFieldsInCommand="false">
+                            <command>
+                                <body>$status == &quot;ok&quot;</body>
+                            </command>
+                            <nestedSteps>
+                                <item guid="58cc6de9-5231-4c80-b5e0-47ed1d50df8d" action="then" useFieldsInCommand="false">
+                                    <nestedSteps>
+                                        <item guid="2e9786a4-12a7-48a4-95ad-81b3f6160ca3" action="eval" useFieldsInCommand="false">
+                                            <command>
+                                                <body>set n 0</body>
+                                            </command>
+                                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                        </item>
+                                        <item guid="cba57635-4451-4186-9e30-2ce73fa3f365" action="foreach" useFieldsInCommand="false">
+                                            <command>
+                                                <body>file $file_list</body>
+                                            </command>
+                                            <nestedSteps>
+                                                <item guid="5c3431e6-d34f-4ea8-b7aa-c46ccf62b94c" action="eval" useFieldsInCommand="false">
+                                                    <command>
+                                                        <body>set file [string trim $file \\&quot;]</body>
+                                                    </command>
+                                                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                                </item>
+                                                <item guid="72915ec5-af9c-45e0-8c5d-a926958e8980" action="eval" useFieldsInCommand="false">
+                                                    <command>
+                                                        <body>set file [string map {&quot; &quot; %20} $file]</body>
+                                                    </command>
+                                                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                                </item>
+                                                <item guid="cfc94395-21a3-4fe5-abd7-7cbe387f069f" action="if" useFieldsInCommand="false">
+                                                    <command>
+                                                        <body>[string match &quot;$pattern&quot; $file] </body>
+                                                    </command>
+                                                    <nestedSteps>
+                                                        <item guid="811672ad-0df8-47c5-a309-a0a80fe6b94b" action="then" useFieldsInCommand="false">
+                                                            <nestedSteps>
+                                                                <item guid="e1f66e26-a58b-40fe-9078-a116c85db6b8" action="comment" useFieldsInCommand="false">
+                                                                    <command>
+                                                                        <body>Download the file to the current directory</body>
+                                                                    </command>
+                                                                    <nestedSteps>
+                                                                        <item guid="520e43cd-522d-4de1-a39f-ee228c341a8c" action="command" session="cmd">
+                                                                            <command>
+                                                                                <body>curl -G -H \\&quot;X-STC-API-Session: $sessionID\\&quot; -H \\&quot;Accept: application/octet-stream\\&quot; -O -J $labserverBaseUrl/$file</body>
+                                                                            </command>
+                                                                            <postProcessing>
+                                                                                <analysisRules>
+                                                                                    <item>
+                                                                                        <extractorInfo extractorType="contains">
+                                                                                            <extractorProperties type="com.fnfr.svt.mapping.execution.extractors.ExtractorContainsPropertyGroup">
+                                                                                                <searchString>Saved to filename</searchString>
+                                                                                            </extractorProperties>
+                                                                                        </extractorInfo>
+                                                                                        <processorInfo ruleType="assert">
+                                                                                            <ruleProperties type="com.fnfr.svt.execution.builtin.processors.AssertionPropertyGroup">
+                                                                                                <expression>$value == 0</expression>
+                                                                                                <actionsWhenTrue>
+                                                                                                    <item actionId="FailTest">
+                                                                                                        <actionProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                                                                                    </item>
+                                                                                                    <item actionId="DeclareExecutionIssue">
+                                                                                                        <actionProperties type="com.fnfr.svt.execution.builtin.actions.ExecutionIssuePropertyGroup">
+                                                                                                            <message>Failed to download file: $file</message>
+                                                                                                        </actionProperties>
+                                                                                                    </item>
+                                                                                                    <item actionId="Eval">
+                                                                                                        <actionProperties type="com.fnfr.svt.execution.builtin.actions.EvalActionPropertyGroup">
+                                                                                                            <statement>set status &quot;One or more files failed to download&quot;</statement>
+                                                                                                        </actionProperties>
+                                                                                                    </item>
+                                                                                                </actionsWhenTrue>
+                                                                                                <actionsWhenFalse>
+                                                                                                    <item actionId="Eval">
+                                                                                                        <actionProperties type="com.fnfr.svt.execution.builtin.actions.EvalActionPropertyGroup">
+                                                                                                            <statement>incr n</statement>
+                                                                                                        </actionProperties>
+                                                                                                    </item>
+                                                                                                </actionsWhenFalse>
+                                                                                            </ruleProperties>
+                                                                                        </processorInfo>
+                                                                                    </item>
+                                                                                </analysisRules>
+                                                                            </postProcessing>
+                                                                            <applicationProperties type="com.fnfr.svt.editors.terminal.documents.StepDefaultProperties"/>
+                                                                        </item>
+                                                                    </nestedSteps>
+                                                                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                                                </item>
+                                                            </nestedSteps>
+                                                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                                        </item>
+                                                    </nestedSteps>
+                                                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                                </item>
+                                            </nestedSteps>
+                                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                        </item>
+                                    </nestedSteps>
+                                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                </item>
+                            </nestedSteps>
+                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                        </item>
+                    </nestedSteps>
+                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                </item>
+                <item guid="beff7893-a37b-4e59-9d93-7954712b56df" action="close" session="cmd">
+                    <applicationProperties type="com.fnfr.svt.editors.terminal.documents.StepDefaultProperties"/>
+                </item>
+                <item guid="45dcc528-0281-41e7-8bfd-e445f5d208e5" action="eval" useFieldsInCommand="false">
+                    <command>
+                        <body>set results_path [file uriToPath $uri]</body>
+                    </command>
+                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                </item>
+                <item guid="bd31b54c-1b43-466e-af78-53d8517d22c7" action="json" useFieldsInCommand="false">
+                    <command>
+                        <body>-action setJsonValue -editResponseStructure true -pathValue {\\{&quot;results_path&quot;:&quot;$results_path&quot;,&quot;num_files_downloaded&quot;:&quot;$n&quot;,&quot;status&quot;:&quot;$status&quot;\\}}</body>
+                    </command>
+                    <applicationProperties type="com.fnfr.svt.execution.builtin.json.JsonPropertiesGroup">
+                        <action inherit="false">setJsonValue</action>
+                        <pathValue inherit="false" sub="true">{&quot;results_path&quot;:&quot;$results_path&quot;,&quot;num_files_downloaded&quot;:&quot;$n&quot;,&quot;status&quot;:&quot;$status&quot;}</pathValue>
+                        <editResponseStructure inherit="false">true</editResponseStructure>
+                    </applicationProperties>
+                </item>
+            </steps>
+            <multilineDescription>Using cURL, download files from STC LabServer.
+
+Return: JSON
+{&quot;results_path&quot;:&quot;value&quot;,&quot;num_files_downloaded&quot;:&quot;value&quot;,&quot;status&quot;:&quot;value&quot;}
+
+NOTE: The STC REST session must be active when calling this procedure.</multilineDescription>
+            <arguments>
+                <item name="resultDirectory">
+                    <description>Path to result directory. </description>
+                    <defaultValue>[info homeDir]/Results</defaultValue>
+                    <isMandatory>true</isMandatory>
+                </item>
+                <item name="sessionID">
+                    <description>Lab server session ID. &quot;&lt;session name&gt; - &lt;owner ID&gt;&quot;
+
+Example:
+rfc2544 - jdoe</description>
+                    <isMandatory>true</isMandatory>
+                </item>
+                <item name="labserverBaseUrl">
+                    <description>URL to labserver:
+http://ps-shared-stc-labserver-1.spirenteng.com/stcapi/files/</description>
+                    <isMandatory>true</isMandatory>
+                </item>
+                <item name="pattern">
+                    <description>File name pattern.</description>
+                    <defaultValue>*</defaultValue>
+                    <isMandatory>true</isMandatory>
+                </item>
+            </arguments>
+            <response>{&quot;results_path&quot;:&quot;value&quot;,&quot;num_files_downloaded&quot;:&quot;value&quot;,&quot;status&quot;:&quot;value&quot;}</response>
+        </item>
+    </procedures>
+</testCase>

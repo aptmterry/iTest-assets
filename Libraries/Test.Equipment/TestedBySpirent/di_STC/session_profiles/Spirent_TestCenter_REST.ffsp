@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<SessionTemplate version="8.2.1.0">
+    <baseApplication>com.spirent.itest.applications.stcrest</baseApplication>
+    <sessionProperties type="com.fnfr.svt.adapter.automation.tools.common.documents.TransferableDocumentObject" transferableToolId="com.spirent.itest.applications.stcrest" transferableType="com.spirent.itest.applications.stcrest.properties.TestCenterRestSessionProperties" RestbaseUrl="http://labserver-1/stcapi" RestbaseUrl.inherit="false" createNewSession="true" createNewSession.inherit="false" sessionName="rfc2544" sessionName.inherit="false" ownerId="[info user]" ownerId.inherit="false" ipAddress="10.142.16.15" ipAddress.inherit="false" ports="2/1 2/2" ports.inherit="false" config="project://d_Spirent_TestCenter/config/RFC2544_Frame_Loss.xml" config.inherit="false" version="VERSION479" version.inherit="false" connectToPorts.inherit="false">
+        <configureCustom16bitFilter transferableToolId="com.spirent.itest.applications.stcrest" transferableType="com.spirent.itest.applications.stcrest.properties.Analyzer16BitFilterProperties" mask="ffff" mask.inherit="false" endOfRange="ffff" endOfRange.inherit="false"/>
+    </sessionProperties>
+    <responseLibrary inherit="false">project://di_STC</responseLibrary>
+    <emulationSource inherit="false">project://di_STC</emulationSource>
+    <formMapLibrary inherit="false">project://di_STC</formMapLibrary>
+    <sessionClassTestCase inherit="false">project://di_STC/session_profiles/Spirent_TestCenter_REST.fftc</sessionClassTestCase>
+    <nickName>stc</nickName>
+    <Overview>Spirent TestCenter</Overview>
+    <Description>The Chassis IP must be available from global parameter: Spirent/TestCenter/ipAddress or via a site-specific param default value.
+
+Example: [param Spirent/TestCenter/ipAddress 10.142.16.15]</Description>
+    <isReferenceProfile>true</isReferenceProfile>
+</SessionTemplate>
